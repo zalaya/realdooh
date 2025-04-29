@@ -19,42 +19,52 @@ class JwtPropertiesTest {
 
     @Test
     void givenProperties_whenContextLoaded_thenPropertiesAreBound() {
-        contextRunner
-            .withPropertyValues(
-                "jwt.secret=this-is-a-secret",
-                "jwt.expiration=1234"
-            )
-            .run(context -> {
-                JwtProperties jwtProperties = context.getBean(JwtProperties.class);
+        // Given
+        String[] properties = {
+            "jwt.secret=this-is-a-secret",
+            "jwt.expiration=1234"
+        };
 
-                assertEquals("this-is-a-secret", jwtProperties.getSecret());
-                assertEquals(1234, jwtProperties.getExpiration());
-            });
+        // When / Then
+        contextRunner.withPropertyValues(properties).run(context -> {
+            JwtProperties jwtProperties = context.getBean(JwtProperties.class);
+
+            assertEquals("this-is-a-secret", jwtProperties.getSecret());
+            assertEquals(1234, jwtProperties.getExpiration());
+        });
     }
 
     @Test
     void givenInvalidSecret_whenContextLoaded_thenThrowException() {
-        contextRunner
-            .withPropertyValues(
-                "jwt.secret=",
-                "jwt.expiration=1234"
-            )
-            .run(context -> {
-                assertThrows(IllegalStateException.class, () -> context.getBean(JwtProperties.class));
+        // Given
+        String[] properties = {
+            "jwt.secret=",
+            "jwt.expiration=1234"
+        };
+
+        // When / Then
+        assertThrows(IllegalStateException.class, () -> {
+            contextRunner.withPropertyValues(properties).run(context -> {
+                context.getBean(JwtProperties.class);
             });
+        });
     }
 
     @ParameterizedTest
     @ValueSource(longs = {0, -100})
     void givenInvalidExpiration_whenContextLoaded_thenThrowException(long expiration) {
-        contextRunner
-            .withPropertyValues(
-                "jwt.secret=this-is-a-secret",
-                "jwt.expiration=" + expiration
-            )
-            .run(context -> {
-                assertThrows(IllegalStateException.class, () -> context.getBean(JwtProperties.class));
+        // Given
+        String[] properties = {
+            "jwt.secret=",
+            "jwt.expiration=" + expiration
+        };
+
+        // When / Then
+        assertThrows(IllegalStateException.class, () -> {
+            contextRunner.withPropertyValues(properties).run(context -> {
+                context.getBean(JwtProperties.class);
             });
+        });
     }
 
 }
