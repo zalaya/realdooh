@@ -1,5 +1,7 @@
 # Acceptance Test-Driven Development
 
+## Backend
+
 - [ ] Dado un email y password válidos, cuando hago POST a /api/auth/login, recibo un token JWT en la respuesta.
 - [ ] Dado un email o password inválidos, cuando hago POST a /api/auth/login, recibo un error 401 con un mensaje de error claro.
 - [ ] El token JWT tiene un tiempo de expiración configurable.
