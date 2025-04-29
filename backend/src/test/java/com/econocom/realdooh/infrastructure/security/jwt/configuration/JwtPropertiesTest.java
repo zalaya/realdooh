@@ -55,7 +55,7 @@ class JwtPropertiesTest {
     void givenInvalidExpiration_whenContextLoaded_thenThrowException(long expiration) {
         // Given
         String[] properties = {
-            "jwt.secret=",
+            "jwt.secret=this-is-a-secret",
             "jwt.expiration=" + expiration
         };
 
