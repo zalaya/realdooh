@@ -14,6 +14,9 @@
         <!-- DEPENDENCIES -->
         <lombok.version>1.18.38</lombok.version>
         <spring-boot.version>3.4.5</spring-boot.version>
+        <java-jwt.version>4.5.0</java-jwt.version>
+        <jakarta-validation-api.version>3.1.1</jakarta-validation-api.version>
+        <hibernate-validator.version>8.0.2.Final</hibernate-validator.version>
 
         <!-- CONFIGURATION -->
         <maven.compiler.source>17</maven.compiler.source>
@@ -22,6 +25,14 @@
     </properties>
 
     <dependencies>
+        <!-- JWT -->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>${java-jwt.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
         <!-- LOMBOK -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -36,6 +47,28 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${spring-boot.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- JAKARTA -->
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>${jakarta-validation-api.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- HIBERNATE -->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>
