@@ -1,15 +1,16 @@
-package com.econocom.realdooh.infrastructure.security.jwt.adapter;
+package com.econocom.realdooh.infrastructure.security.jwt;
 
 import com.econocom.realdooh.domain.port.outbound.security.TokenProvider;
-import com.econocom.realdooh.infrastructure.security.jwt.configuration.JwtProperties;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.Map;
 
+@Component
 public class JwtTokenProvider implements TokenProvider {
 
     private final JwtProperties properties;

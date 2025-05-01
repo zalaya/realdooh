@@ -1,7 +1,6 @@
-package com.econocom.realdooh.infrastructure.persistence.repository;
+package com.econocom.realdooh.infrastructure.persistence.user.repository;
 
-import com.econocom.realdooh.infrastructure.persistence.entity.UserEntity;
-
+import com.econocom.realdooh.infrastructure.persistence.user.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

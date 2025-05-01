@@ -1,7 +1,6 @@
-package com.econocom.realdooh.infrastructure.persistence.mapper;
+package com.econocom.realdooh.infrastructure.persistence.user;
 
-import com.econocom.realdooh.domain.model.User;
-import com.econocom.realdooh.infrastructure.persistence.entity.UserEntity;
+import com.econocom.realdooh.domain.User;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

@@ -1,10 +1,11 @@
-package com.econocom.realdooh.infrastructure.persistence.mapper;
+package com.econocom.realdooh.infrastructure.persistence;
 
-import com.econocom.realdooh.domain.model.User;
+import com.econocom.realdooh.domain.User;
 import com.econocom.realdooh.domain.vo.Email;
 import com.econocom.realdooh.domain.vo.HashedPassword;
-import com.econocom.realdooh.infrastructure.persistence.entity.UserEntity;
+import com.econocom.realdooh.infrastructure.persistence.user.UserEntity;
 
+import com.econocom.realdooh.infrastructure.persistence.user.UserEntityMapper;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 

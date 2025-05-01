@@ -1,4 +1,4 @@
-package com.econocom.realdooh.infrastructure.persistence.entity;
+package com.econocom.realdooh.infrastructure.persistence.user;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

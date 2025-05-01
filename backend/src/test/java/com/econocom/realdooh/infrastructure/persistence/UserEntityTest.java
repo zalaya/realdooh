@@ -1,5 +1,6 @@
-package com.econocom.realdooh.infrastructure.persistence.entity;
+package com.econocom.realdooh.infrastructure.persistence;
 
+import com.econocom.realdooh.infrastructure.persistence.user.UserEntity;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertAll;

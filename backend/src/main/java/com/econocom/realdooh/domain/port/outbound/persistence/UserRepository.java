@@ -1,6 +1,6 @@
 package com.econocom.realdooh.domain.port.outbound.persistence;
 
-import com.econocom.realdooh.domain.model.User;
+import com.econocom.realdooh.domain.User;
 import com.econocom.realdooh.domain.vo.Email;
 
 import java.util.Optional;

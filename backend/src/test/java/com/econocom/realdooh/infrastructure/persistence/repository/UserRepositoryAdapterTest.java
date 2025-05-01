@@ -1,11 +1,12 @@
-package com.econocom.realdooh.infrastructure.persistence.adapter;
+package com.econocom.realdooh.infrastructure.persistence.repository;
 
-import com.econocom.realdooh.domain.model.User;
+import com.econocom.realdooh.domain.User;
 import com.econocom.realdooh.domain.vo.Email;
 import com.econocom.realdooh.domain.vo.HashedPassword;
-import com.econocom.realdooh.infrastructure.persistence.entity.UserEntity;
-import com.econocom.realdooh.infrastructure.persistence.mapper.UserEntityMapper;
-import com.econocom.realdooh.infrastructure.persistence.repository.UserJpaRepository;
+import com.econocom.realdooh.infrastructure.persistence.user.UserEntity;
+import com.econocom.realdooh.infrastructure.persistence.user.UserEntityMapper;
+import com.econocom.realdooh.infrastructure.persistence.user.repository.UserJpaRepository;
+import com.econocom.realdooh.infrastructure.persistence.user.repository.UserRepositoryAdapter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

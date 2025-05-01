@@ -1,4 +1,4 @@
-package com.econocom.realdooh.infrastructure.security.jwt.configuration;
+package com.econocom.realdooh.infrastructure.security.jwt;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;

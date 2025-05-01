@@ -1,6 +1,4 @@
-package com.econocom.realdooh.infrastructure.security.jwt.adapter;
-
-import com.econocom.realdooh.infrastructure.security.jwt.configuration.JwtProperties;
+package com.econocom.realdooh.infrastructure.security.jwt;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.DecodedJWT;

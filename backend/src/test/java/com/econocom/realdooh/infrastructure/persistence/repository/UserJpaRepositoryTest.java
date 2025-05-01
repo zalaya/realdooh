@@ -1,7 +1,8 @@
 package com.econocom.realdooh.infrastructure.persistence.repository;
 
-import com.econocom.realdooh.infrastructure.persistence.entity.UserEntity;
+import com.econocom.realdooh.infrastructure.persistence.user.UserEntity;
 
+import com.econocom.realdooh.infrastructure.persistence.user.repository.UserJpaRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

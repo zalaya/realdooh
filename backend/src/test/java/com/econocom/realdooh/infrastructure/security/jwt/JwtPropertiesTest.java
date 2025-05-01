@@ -1,4 +1,4 @@
-package com.econocom.realdooh.infrastructure.security.jwt.configuration;
+package com.econocom.realdooh.infrastructure.security.jwt;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

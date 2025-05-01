@@ -1,4 +1,4 @@
-package com.econocom.realdooh.domain.model;
+package com.econocom.realdooh.domain;
 
 import com.econocom.realdooh.domain.vo.Password;
 import com.econocom.realdooh.domain.vo.Email;

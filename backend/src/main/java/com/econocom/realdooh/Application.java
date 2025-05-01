@@ -1,6 +1,6 @@
 package com.econocom.realdooh;
 
-import com.econocom.realdooh.infrastructure.security.jwt.configuration.JwtProperties;
+import com.econocom.realdooh.infrastructure.security.jwt.JwtProperties;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
