@@ -6,8 +6,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class JwtPropertiesTest {
 
@@ -29,8 +28,10 @@ class JwtPropertiesTest {
         contextRunner.withPropertyValues(properties).run(context -> {
             JwtProperties jwtProperties = context.getBean(JwtProperties.class);
 
-            assertEquals("this-is-a-secret", jwtProperties.getSecret());
-            assertEquals(1234, jwtProperties.getExpiration());
+            assertAll(
+                () -> assertEquals("this-is-a-secret", jwtProperties.getSecret()),
+                () -> assertEquals(1234, jwtProperties.getExpiration())
+            );
         });
     }
 

@@ -1,7 +1,6 @@
 package com.econocom.realdooh.domain.vo;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
@@ -18,18 +17,17 @@ class UsernameTest {
         Username username = new Username(value);
 
         // Then
-        assertInstanceOf(Username.class, username);
-        assertEquals(value, username.getValue());
+        assertAll(
+            () -> assertInstanceOf(Username.class, username),
+            () -> assertEquals(value, username.getValue())
+        );
     }
 
     @ParameterizedTest
     @NullAndEmptySource
     void givenInvalidValue_whenCreating_thenThrowException(String value) {
-        // When
-        Executable executable = () -> new Username(value);
-
-        // Then
-        assertThrows(IllegalArgumentException.class, executable);
+        // When / Then
+        assertThrows(IllegalArgumentException.class, () -> new Username(value));
     }
 
 }

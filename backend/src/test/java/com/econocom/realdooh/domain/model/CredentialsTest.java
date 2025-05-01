@@ -19,9 +19,11 @@ class CredentialsTest {
         Credentials credentials = new Credentials(username, password);
 
         // Then
-        assertInstanceOf(Password.class, password);
-        assertEquals(username, credentials.getUsername());
-        assertEquals(password, credentials.getPassword());
+        assertAll(
+            () -> assertInstanceOf(Password.class, password),
+            () -> assertEquals(username, credentials.getUsername()),
+            () -> assertEquals(password, credentials.getPassword())
+        );
     }
 
 }
