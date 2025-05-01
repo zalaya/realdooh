@@ -1,4 +1,4 @@
-package com.econocom.realdooh.domain.port.outbound;
+package com.econocom.realdooh.domain.port.outbound.security;
 
 import java.util.Map;
 

@@ -1,6 +1,6 @@
 package com.econocom.realdooh.infrastructure.security.jwt.adapter;
 
-import com.econocom.realdooh.domain.port.outbound.TokenProvider;
+import com.econocom.realdooh.domain.port.outbound.security.TokenProvider;
 import com.econocom.realdooh.infrastructure.security.jwt.configuration.JwtProperties;
 
 import com.auth0.jwt.JWT;

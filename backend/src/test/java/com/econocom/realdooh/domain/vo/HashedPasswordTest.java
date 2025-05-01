@@ -6,20 +6,20 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class UsernameTest {
+class HashedPasswordTest {
 
     @Test
-    void givenValidValue_whenCreating_thenCreateUsername() {
+    void givenValidValue_whenCreating_thenCreateHashedPassword() {
         // Given
-        String value = "Username";
+        String value = "HashedPassword";
 
         // When
-        Username username = new Username(value);
+        HashedPassword hashedPassword = new HashedPassword(value);
 
         // Then
         assertAll(
-            () -> assertInstanceOf(Username.class, username),
-            () -> assertEquals(value, username.getValue())
+            () -> assertInstanceOf(HashedPassword.class, hashedPassword),
+            () -> assertEquals(value, hashedPassword.getValue())
         );
     }
 
@@ -27,7 +27,7 @@ class UsernameTest {
     @NullAndEmptySource
     void givenInvalidValue_whenCreating_thenThrowException(String value) {
         // When / Then
-        assertThrows(IllegalArgumentException.class, () -> new Username(value));
+        assertThrows(IllegalArgumentException.class, () -> new HashedPassword(value));
     }
 
 }
