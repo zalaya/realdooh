@@ -1,6 +1,5 @@
-package com.econocom.realdooh.auth.infrastructure.rest.error;
+package com.econocom.realdooh.shared.infrastructure.rest.error;
 
-import com.econocom.realdooh.shared.infrastructure.rest.error.ApiError;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

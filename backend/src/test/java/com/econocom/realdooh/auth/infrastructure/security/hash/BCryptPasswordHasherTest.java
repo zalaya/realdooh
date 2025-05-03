@@ -1,8 +1,7 @@
-package com.econocom.realdooh.auth.infrastructure.security.rest;
+package com.econocom.realdooh.auth.infrastructure.security.hash;
 
 import com.econocom.realdooh.auth.domain.vo.user.HashedPassword;
 import com.econocom.realdooh.auth.domain.vo.user.Password;
-import com.econocom.realdooh.auth.infrastructure.security.hash.BCryptPasswordHasher;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
