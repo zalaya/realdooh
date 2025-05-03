@@ -1,4 +1,4 @@
-package com.econocom.realdooh.auth.infrastructure.rest.error;
+package com.econocom.realdooh.shared.infrastructure.rest.error;
 
 import lombok.Value;
 

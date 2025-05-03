@@ -34,7 +34,7 @@ class AuthControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    private static final String ENDPOINT = "/auth/login/login";
+    private static final String ENDPOINT = "/auth/login";
 
     @ParameterizedTest
     @ValueSource(strings = {"invalid-email", "user@", "", "   "})
@@ -98,7 +98,7 @@ class AuthControllerTest {
         when(loginUseCase.login(any(Credentials.class))).thenThrow(new IllegalArgumentException("Invalid credentials"));
 
         // When / Then
-        mockMvc.perform(post("/auth/login/login")
+        mockMvc.perform(post(ENDPOINT)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(request)))
             .andExpect(status().isUnauthorized())

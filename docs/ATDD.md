@@ -2,8 +2,8 @@
 
 ## Backend
 
-- [ ] Dado un email y password válidos, cuando hago POST a /api/auth/login, recibo un token JWT en la respuesta.
-- [ ] Dado un email o password inválidos, cuando hago POST a /api/auth/login, recibo un error 401 con un mensaje de error claro.
+- [X] Dado un email y password válidos, cuando hago POST a /api/auth/login, recibo un token JWT en la respuesta.
+- [X] Dado un email o password inválidos, cuando hago POST a /api/auth/login, recibo un error 401 con un mensaje de error claro.
 - [X] El token JWT tiene un tiempo de expiración configurable.
 - [X] El token JWT puede ser validado correctamente.
 - [ ] Al hacer GET a /api/auth/sso, el servidor devuelve una respuesta 302 (redirección) a una URL de un proveedor SSO simulado.

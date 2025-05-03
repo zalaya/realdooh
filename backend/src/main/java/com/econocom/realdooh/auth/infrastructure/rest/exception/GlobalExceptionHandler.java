@@ -1,6 +1,6 @@
 package com.econocom.realdooh.auth.infrastructure.rest.exception;
 
-import com.econocom.realdooh.auth.infrastructure.rest.error.ApiError;
+import com.econocom.realdooh.shared.infrastructure.rest.error.ApiError;
 import com.econocom.realdooh.shared.domain.exception.InvalidValueObjectException;
 
 import org.springframework.http.HttpStatus;

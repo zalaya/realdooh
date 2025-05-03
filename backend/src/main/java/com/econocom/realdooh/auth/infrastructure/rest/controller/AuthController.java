@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/auth/login")
+@RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
@@ -25,14 +25,15 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest request) {
-        Tokens response = loginUseCase.login(new Credentials(
+        Tokens tokens = loginUseCase.login(new Credentials(
             new Email(request.getEmail()),
             new Password(request.getPassword())
         ));
 
         return ResponseEntity.ok(new LoginResponse(
-            response.getAccessToken().getValue(),
-            response.getRefreshToken().getValue()
+            tokens.getAccessToken().getValue(),
+            tokens.getRefreshToken().getValue(),
+            tokens.getAccessToken().getExpiresIn()
         ));
     }
 
