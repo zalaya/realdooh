@@ -18,6 +18,9 @@ spring:
     init:
       mode: always
 
-jwt:
-  secret: this-is-a-secret
-  expiration: 3600
+auth:
+  token:
+    issuer: realdooh-auth
+    secret: this-is-a-secret
+    access-token-expiration: 3600
+    refresh-token-expiration: 86400

@@ -1,3 +1,6 @@
-jwt:
-  expiration: 3600
-  secret: this-is-a-secret
+auth:
+  token:
+    issuer: realdooh-auth
+    secret: this-is-a-secret
+    access-token-expiration: 3600
+    refresh-token-expiration: 86400

@@ -1,13 +1,13 @@
 package com.econocom.realdooh;
 
-import com.econocom.realdooh.infrastructure.security.jwt.JwtProperties;
+import com.econocom.realdooh.auth.infrastructure.security.configuration.properties.TokenProperties;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @SpringBootApplication
-@EnableConfigurationProperties(JwtProperties.class)
+@EnableConfigurationProperties(TokenProperties.class)
 public class Application {
 
     public static void main(String[] args) {
