@@ -23,6 +23,13 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+      - name: Cache Maven dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: maven-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            maven-${{ runner.os }}-
       - name: Make Maven Wrapper executable
         run: chmod +x mvnw
       - name: Run unit and integration tests
