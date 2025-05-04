@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+
+  database:
+    build:
+      context: ./database
+    container_name: realdooh-database
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: realdooh
+    networks:
+      - realdooh-network
+    volumes:
+      - database_data:/var/lib/mysql
+
+  backend:
+    build:
+      context: ./backend
+    container_name: realdooh-backend
+    depends_on:
+      - database
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://realdooh-database:3306/realdooh
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    networks:
+      - realdooh-network
+
+volumes:
+  database_data:
+
+networks:
+  realdooh-network:
+    driver: bridge
