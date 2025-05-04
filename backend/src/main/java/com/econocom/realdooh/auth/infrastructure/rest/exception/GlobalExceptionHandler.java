@@ -1,5 +1,6 @@
 package com.econocom.realdooh.auth.infrastructure.rest.exception;
 
+import com.econocom.realdooh.shared.domain.exception.EntityNotFoundException;
 import com.econocom.realdooh.shared.infrastructure.rest.error.ApiError;
 import com.econocom.realdooh.shared.domain.exception.InvalidValueObjectException;
 
@@ -39,6 +40,13 @@ public class GlobalExceptionHandler {
         return ResponseEntity
             .status(HttpStatus.UNAUTHORIZED)
             .body(new ApiError(exception.getMessage(), HttpStatus.UNAUTHORIZED.value()));
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<ApiError> handleEntityNotFound(EntityNotFoundException exception) {
+        return ResponseEntity
+            .status(HttpStatus.NOT_FOUND)
+            .body(new ApiError(exception.getMessage(), HttpStatus.NOT_FOUND.value()));
     }
 
     @ExceptionHandler(Exception.class)

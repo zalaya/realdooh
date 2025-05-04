@@ -24,11 +24,7 @@ public class UserRepositoryAdapter implements UserRepository {
         String message = "User with email " + email.getValue() + " not found";
         UserEntity entity = repository.findByEmail(email.getValue()).orElseThrow(() -> new EntityNotFoundException(message));
 
-        return Optional.of(new User(
-            new UserId(entity.getId()),
-            email,
-            new HashedPassword(entity.getPassword())
-        ));
+        return Optional.of(new User(new UserId(entity.getId()), email, new HashedPassword(entity.getPassword())));
     }
 
 }
