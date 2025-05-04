@@ -25,16 +25,10 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest request) {
-        Tokens tokens = loginUseCase.login(new Credentials(
-            new Email(request.getEmail()),
-            new Password(request.getPassword())
-        ));
+        Credentials credentials = new Credentials(new Email(request.getEmail()), new Password(request.getPassword()));
+        Tokens tokens = loginUseCase.login(credentials);
 
-        return ResponseEntity.ok(new LoginResponse(
-            tokens.getAccessToken().getValue(),
-            tokens.getRefreshToken().getValue(),
-            tokens.getAccessToken().getExpiresIn()
-        ));
+        return ResponseEntity.ok(new LoginResponse(tokens.getAccessToken().getValue(), tokens.getRefreshToken().getValue()));
     }
 
 }

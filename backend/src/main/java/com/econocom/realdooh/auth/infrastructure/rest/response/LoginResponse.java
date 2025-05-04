@@ -8,6 +8,5 @@ public class LoginResponse {
     String tokenType = "Bearer";
     String accessToken;
     String refreshToken;
-    long expiresIn;
 
 }

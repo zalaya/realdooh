@@ -18,6 +18,7 @@ class TokenPropertiesTest {
 
     @Test
     void givenValidProperties_whenContextLoaded_thenPropertiesAreBoundCorrectly() {
+        // Given
         String[] properties = {
             "auth.token.secret=this-is-a-secret",
             "auth.token.issuer=realdooh-auth",
@@ -25,6 +26,7 @@ class TokenPropertiesTest {
             "auth.token.refresh-token-expiration=86400"
         };
 
+        // When / Then
         contextRunner.withPropertyValues(properties).run(context -> {
             TokenProperties tokenProperties = context.getBean(TokenProperties.class);
 
@@ -39,6 +41,7 @@ class TokenPropertiesTest {
 
     @Test
     void givenEmptySecret_whenContextLoaded_thenValidationFails() {
+        // Given
         String[] properties = {
             "auth.token.secret=",
             "auth.token.issuer=realdooh-auth",
@@ -46,6 +49,7 @@ class TokenPropertiesTest {
             "auth.token.refresh-token-expiration=86400"
         };
 
+        // When / Then
         assertThrows(IllegalStateException.class, () -> {
             contextRunner.withPropertyValues(properties).run(context -> {
                 context.getBean(TokenProperties.class);
@@ -55,6 +59,7 @@ class TokenPropertiesTest {
 
     @Test
     void givenEmptyIssuer_whenContextLoaded_thenValidationFails() {
+        // Given
         String[] properties = {
             "auth.token.secret=this-is-a-secret",
             "auth.token.issuer=",
@@ -62,6 +67,7 @@ class TokenPropertiesTest {
             "auth.token.refresh-token-expiration=86400"
         };
 
+        // When / Then
         assertThrows(IllegalStateException.class, () -> {
             contextRunner.withPropertyValues(properties).run(context -> {
                 context.getBean(TokenProperties.class);
@@ -72,6 +78,7 @@ class TokenPropertiesTest {
     @ParameterizedTest
     @ValueSource(longs = {0, -1})
     void givenInvalidAccessTokenExpiration_whenContextLoaded_thenValidationFails(long value) {
+        // Given
         String[] properties = {
             "auth.token.secret=this-is-a-secret",
             "auth.token.issuer=realdooh-auth",
@@ -79,6 +86,7 @@ class TokenPropertiesTest {
             "auth.token.refresh-token-expiration=86400"
         };
 
+        // When / Then
         assertThrows(IllegalStateException.class, () -> {
             contextRunner.withPropertyValues(properties).run(context -> {
                 context.getBean(TokenProperties.class);
@@ -89,6 +97,7 @@ class TokenPropertiesTest {
     @ParameterizedTest
     @ValueSource(longs = {0, -10})
     void givenInvalidRefreshTokenExpiration_whenContextLoaded_thenValidationFails(long value) {
+        // Given
         String[] properties = {
             "auth.token.secret=this-is-a-secret",
             "auth.token.issuer=realdooh-auth",
@@ -96,6 +105,7 @@ class TokenPropertiesTest {
             "auth.token.refresh-token-expiration=" + value
         };
 
+        // When / Then
         assertThrows(IllegalStateException.class, () -> {
             contextRunner.withPropertyValues(properties).run(context -> {
                 context.getBean(TokenProperties.class);

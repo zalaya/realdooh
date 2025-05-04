@@ -5,39 +5,34 @@ import com.econocom.realdooh.auth.domain.vo.user.Email;
 import com.econocom.realdooh.auth.domain.vo.user.HashedPassword;
 import com.econocom.realdooh.auth.domain.vo.user.UserId;
 import com.econocom.realdooh.auth.infrastructure.persistence.entity.UserEntity;
-import com.econocom.realdooh.auth.infrastructure.persistence.mapper.UserEntityMapper;
 
+import com.econocom.realdooh.shared.domain.exception.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 class UserRepositoryAdapterTest {
 
     private UserJpaRepository repository;
-    private UserEntityMapper mapper;
     private UserRepositoryAdapter adapter;
 
     @BeforeEach
     void beforeEach() {
         repository = mock(UserJpaRepository.class);
-        mapper = mock(UserEntityMapper.class);
-        adapter = new UserRepositoryAdapter(repository, mapper);
+        adapter = new UserRepositoryAdapter(repository);
     }
 
     @Test
     void givenExistingEmail_whenFindByEmail_thenReturnUser() {
         // Given
-        UserId id = new UserId(1L);
-        Email email = new Email("Email");
-        HashedPassword password = new HashedPassword("HashedPassword");
-
         when(repository.findByEmail("Email")).thenReturn(Optional.of(new UserEntity(1L, "Email", "HashedPassword")));
-        when(mapper.toDomain(new UserEntity(1L, "Email", "HashedPassword"))).thenReturn(new User(id, email, password));
 
         // When
         User domain = adapter.findByEmail(new Email("Email")).orElseThrow();
@@ -54,10 +49,10 @@ class UserRepositoryAdapterTest {
         when(repository.findByEmail("Email")).thenReturn(Optional.empty());
 
         // When
-        Optional<User> domain = adapter.findByEmail(new Email("Email"));
+        Executable executable = () -> adapter.findByEmail(new Email("Email"));
 
         // Then
-        assertEquals(Optional.empty(), domain);
+        assertThrows(EntityNotFoundException.class, executable);
     }
 
 }
