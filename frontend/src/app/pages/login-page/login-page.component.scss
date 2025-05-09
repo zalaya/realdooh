@@ -1,0 +1,71 @@
+.login-page {
+  display: flex;
+  height: 100vh;
+  background: #f5f6f7;
+
+  .illustration {
+    flex: 1;
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+  }
+
+  .login-section {
+    width: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .login-card {
+      width: 100%;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .login-content {
+        margin-top: 30%;
+        width: 65%;
+
+        .logo {
+          width: 254px;
+          margin-bottom: 50px;
+        }
+
+        .title {
+          margin: 0 0 1.5rem;
+          font-size: 22px;
+          font-weight: 400;
+          color: #212121;
+        }
+      }
+    }
+
+    .footer {
+        width: 100%;
+        margin-top: 10%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        app-language-selector {
+          margin-bottom: 1.5rem;
+        }
+
+        .econocom-logo {
+          width: 130px;
+        }
+      }
+  }
+}

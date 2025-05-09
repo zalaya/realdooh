@@ -23,7 +23,7 @@ public class LoginService implements LoginUseCase {
 
     @Override
     public Tokens login(Credentials credentials) {
-        User user = repository.findByEmail(credentials.getEmail()).orElseThrow();
+        User user = repository.findByEmail(credentials.getEmail());
 
         if (!passwordHasher.matches(credentials.getPassword(), user.getPassword())) {
             throw new IllegalArgumentException("Invalid Password");

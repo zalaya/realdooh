@@ -1,0 +1,18 @@
+{
+  "LOGIN": {
+    "TITLE": "Se connecter",
+    "EMAIL": "Email",
+    "PASSWORD": "Mot de passe",
+    "BUTTON": "CONNEXION",
+    "ERRORS": {
+      "EMAIL_REQUIRED": "L'email est obligatoire",
+      "EMAIL_INVALID": "Format d'email invalide",
+      "PASSWORD_REQUIRED": "Le mot de passe est obligatoire",
+      "INVALID_CREDENTIALS": "Identifiants invalides"
+    },
+    "OTHER_ACCESS": "Autres méthodes d'accès",
+    "SSO_BUTTON": "Connexion SSO",
+    "NO_ACCOUNT": "Pas de compte ?",
+    "SIGN_UP": "S'inscrire"
+  }
+}

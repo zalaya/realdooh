@@ -1,0 +1,18 @@
+{
+  "LOGIN": {
+    "TITLE": "Iniciar sesión en tu cuenta",
+    "EMAIL": "Correo electrónico",
+    "PASSWORD": "Contraseña",
+    "BUTTON": "ENTRAR",
+    "ERRORS": {
+      "EMAIL_REQUIRED": "El correo es obligatorio",
+      "EMAIL_INVALID": "Formato de correo inválido",
+      "PASSWORD_REQUIRED": "La contraseña es obligatoria",
+      "INVALID_CREDENTIALS": "Credenciales inválidas"
+    },
+    "OTHER_ACCESS": "Otras opciones de acceso",
+    "SSO_BUTTON": "Acceso SSO",
+    "NO_ACCOUNT": "¿No tienes cuenta?",
+    "SIGN_UP": "Regístrate"
+  }
+}

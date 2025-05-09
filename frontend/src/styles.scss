@@ -1,0 +1,36 @@
+@use '@angular/material' as mat;
+@use "assets/scss/4-generic/_normalize";
+@use "assets/scss/4-generic/_reset";
+/*********************************************/
+
+//Add anything you need to use globally here
+@use "assets/scss/1-settings/_variables";
+@use "assets/scss/3-tools/breakpoints";
+@use "assets/scss/3-tools/notouch-hover";
+@use "assets/scss/3-tools/fluid-type";
+@use "assets/scss/3-tools/nth-child";
+
+html {
+  @include mat.theme((color: (theme-type: light,
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    ));
+}
+
+/* You can add global styles to this file, and also import other style files */
+// Plus imports for other components in your app.
+/*********************************************/
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

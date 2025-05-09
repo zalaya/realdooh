@@ -1,0 +1,18 @@
+<button
+  mat-button
+  disableRipple
+  [matMenuTriggerFor]="langMenu"
+  class="lang-selector"
+>
+  <mat-icon class="lang-icon">language</mat-icon>
+  <span class="label">IDIOMA:</span>
+  <span class="lang-text">{{ currentLang }}</span>
+  <mat-icon class="arrow-icon">arrow_drop_down</mat-icon>
+</button>
+
+<mat-menu #langMenu="matMenu">
+  <button mat-menu-item (click)="switch('es')">ES</button>
+  <button mat-menu-item (click)="switch('en')">EN</button>
+  <button mat-menu-item (click)="switch('fr')">FR</button>
+  <button mat-menu-item (click)="switch('pt')">PT</button>
+</mat-menu>

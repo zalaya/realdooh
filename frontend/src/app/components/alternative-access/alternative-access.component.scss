@@ -1,0 +1,25 @@
+.alternative-access {
+  margin-top: 2rem;
+
+  .sso-button {
+    width: 100%;
+    margin: 1rem 0;
+    background-color: #16697A;
+    border-radius: 4px;
+    color: white;
+    text-transform: uppercase;
+  }
+
+  .signup-text {
+    font-size: 14px;
+    a {
+      color: orange;
+      text-decoration: none;
+      padding-bottom: 1px;
+      
+      &:hover {
+        border-bottom: 1px solid orange;
+      }
+    }
+  }
+}

@@ -16,9 +16,6 @@ import com.econocom.realdooh.auth.domain.vo.user.UserId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.NoSuchElementException;
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -46,7 +43,7 @@ class LoginServiceTest {
     @Test
     void givenValidCredentials_whenLogin_thenReturnTokens() {
         // Given
-        when(repository.findByEmail(email)).thenReturn(Optional.of(user));
+        when(repository.findByEmail(email)).thenReturn(user);
         when(passwordHasher.matches(password, hashedPassword)).thenReturn(true);
         when(tokenGenerator.generateAccessToken(user)).thenReturn(new AccessToken("access-token"));
         when(tokenGenerator.generateRefreshToken(user)).thenReturn(new RefreshToken("refresh-token"));
@@ -65,22 +62,12 @@ class LoginServiceTest {
     @Test
     void givenWrongPassword_whenLogin_thenThrowException() {
         // Given
-        when(repository.findByEmail(email)).thenReturn(Optional.of(user));
+        when(repository.findByEmail(email)).thenReturn(user);
         when(passwordHasher.matches(password, hashedPassword)).thenReturn(false);
         Credentials credentials = new Credentials(email, password);
 
         // When / Then
         assertThrows(IllegalArgumentException.class, () -> loginService.login(credentials));
-    }
-
-    @Test
-    void givenUnknownUser_whenLogin_thenThrowException() {
-        // Given
-        when(repository.findByEmail(email)).thenReturn(Optional.empty());
-        Credentials credentials = new Credentials(email, password);
-
-        // When / Then
-        assertThrows(NoSuchElementException.class, () -> loginService.login(credentials));
     }
 
 }

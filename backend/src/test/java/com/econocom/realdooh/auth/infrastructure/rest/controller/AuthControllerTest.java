@@ -1,14 +1,22 @@
 package com.econocom.realdooh.auth.infrastructure.rest.controller;
 
 import com.econocom.realdooh.auth.domain.model.Credentials;
+import com.econocom.realdooh.auth.domain.model.Tokens;
+import com.econocom.realdooh.auth.domain.vo.user.Email;
+import com.econocom.realdooh.auth.domain.vo.user.Password;
 import com.econocom.realdooh.auth.domain.port.inbound.LoginUseCase;
+import com.econocom.realdooh.auth.infrastructure.rest.mapper.LoginRequestMapper;
+import com.econocom.realdooh.auth.infrastructure.rest.mapper.LoginResponseMapper;
+import com.econocom.realdooh.auth.infrastructure.rest.request.LoginRequest;
+import com.econocom.realdooh.auth.infrastructure.rest.response.LoginResponse;
 import com.econocom.realdooh.shared.domain.exception.InvalidValueObjectException;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
@@ -19,6 +27,7 @@ import java.util.Map;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -31,10 +40,39 @@ class AuthControllerTest {
     @MockitoBean
     private LoginUseCase loginUseCase;
 
+    @MockitoBean
+    private LoginRequestMapper requestMapper;
+
+    @MockitoBean
+    private LoginResponseMapper responseMapper;
+
     @Autowired
     private ObjectMapper objectMapper;
 
     private static final String ENDPOINT = "/auth/login";
+
+    @BeforeEach
+    void beforeEach() {
+        when(requestMapper.toDomain(any(LoginRequest.class)))
+            .thenAnswer(invocation -> {
+                LoginRequest request = invocation.getArgument(0);
+
+                return new Credentials(
+                    new Email(request.getEmail()),
+                    new Password(request.getPassword())
+                );
+            });
+
+        when(responseMapper.toDto(any(Tokens.class)))
+            .thenAnswer(invocation -> {
+                Tokens tokens = invocation.getArgument(0);
+
+                return new LoginResponse(
+                    tokens.getAccessToken().getValue(),
+                    tokens.getRefreshToken().getValue()
+                );
+            });
+    }
 
     @ParameterizedTest
     @ValueSource(strings = {"invalid-email", "user@", "", "   "})
@@ -76,7 +114,8 @@ class AuthControllerTest {
             "password", "Valid Password"
         );
 
-        when(loginUseCase.login(any(Credentials.class))).thenThrow(new InvalidValueObjectException("Invalid Credentials"));
+        when(loginUseCase.login(any(Credentials.class)))
+            .thenThrow(new InvalidValueObjectException("Invalid Credentials"));
 
         // When / Then
         mockMvc.perform(post(ENDPOINT)
@@ -95,7 +134,8 @@ class AuthControllerTest {
             "password", "Wrong Password"
         );
 
-        when(loginUseCase.login(any(Credentials.class))).thenThrow(new IllegalArgumentException("Invalid credentials"));
+        when(loginUseCase.login(any(Credentials.class)))
+            .thenThrow(new IllegalArgumentException("Invalid credentials"));
 
         // When / Then
         mockMvc.perform(post(ENDPOINT)
